@@ -2,16 +2,18 @@
 
 {% block main %}
 
-    {% if request.user and facebook_social_auth and not user.is_anonymous %}
-        <h3>Hello, {{ request.user.get_full_name }}!</h3>
-        <br>
-        <img src="http://graph.facebook.com/{{ facebook_social_auth.uid }}/picture?type=large" />
-        <br>
-        <a href="/logout">Logout</a>
-    {% else %}
-        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-facebook">
-            <span class="fa fa-facebook"></span> Sign in with Facebook
-        </a>
-    {% endif %}
+    <div class="text-center">
+        {% if request.user and facebook_social_auth and not user.is_anonymous %}
+            <h3>Hello, {{ request.user.get_full_name }}!</h3>
+            <br>
+            <img src="http://graph.facebook.com/{{ facebook_social_auth.uid }}/picture?type=large" />
+            <br>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-facebook">
+                <span class="fa fa-facebook"></span> Sign in with Facebook
+            </a>
+        {% endif %}
+    </div>
 
 {% endblock %}
