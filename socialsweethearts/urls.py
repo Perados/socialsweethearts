@@ -16,9 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
+from facebook import views as facebook_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'facebook.views.home', name='home'),
+    url(r'^$', facebook_views.login),
+    url(r'^home/$', facebook_views.home),
+    url(r'^logout/$', facebook_views.logout),
     url('', include('social.apps.django_app.urls', namespace='social')),
+
 ]
