@@ -12,6 +12,10 @@ from socialsweethearts import settings
 
 def login(request):
     facebook_social_auth = request.user.social_auth.get(provider='facebook') if hasattr(request.user, 'social_auth') else None
+    if request.user.is_authenticated():
+        if request.user.is_active is False:
+            request.user.is_active = True
+            request.user.save()
     return render_to_response('login.html', {'request': request, 'facebook_social_auth': facebook_social_auth })
 
 @login_required()
