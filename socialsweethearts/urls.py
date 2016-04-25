@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', facebook_views.login),
     url(r'^home/$', facebook_views.home),
     url(r'^logout/$', facebook_views.logout),
+    url(r'^deauthorize/$', facebook_views.deauthorize),
     url('', include('social.apps.django_app.urls', namespace='social')),
 
 ]
